@@ -10,8 +10,10 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  ToolbarAndroid
 } from 'react-native';
+import SearchPage from './SearchPage';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -22,15 +24,31 @@ const instructions = Platform.select({
 
 export default class App extends Component<{}> {
   render() {
-    return React.createElement(Text, {style: styles.description}, "Search for houses to buy!");
+    return (
+	<View style={{flex: 1, flexDirection: 'column'}}>
+		<ToolbarAndroid
+		  style={styles.toolbar}
+		  logo={require('./logo.png')}
+		  title="Refit" />
+		  
+		  <SearchPage />
+		  
+	</View>
+	 )
   }
 }
 
 const styles = StyleSheet.create({
-  description: {
-    fontSize: 18,
-    textAlign: 'center',
-    color: '#656565',
-    marginTop: 65,
-  },
+	toolbar: {
+	   backgroundColor: '#e0e0e0',
+	   elevation   : 3,
+	   height: 56,
+	   alignSelf: 'stretch',
+	 },
+	description: {
+		fontSize: 18,
+		textAlign: 'center',
+		color: '#656565',
+		marginTop: 65,
+	},
 });
